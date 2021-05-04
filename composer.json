@@ -1,0 +1,21 @@
+{
+  "name": "underpin/admin-page-loader",
+  "description": "Admin Page Loader for Underpin",
+  "type": "library",
+  "license": "GPL 2.0",
+  "authors": [
+    {
+      "name": "Alex Standiford",
+      "email": "a@alexstandiford.com"
+    }
+  ],
+  "require": {
+    "underpin/logger-loader": "^1.0",
+    "underpin/underpin": "1.2.*"
+  },
+  "autoload": {
+    "files": [
+      "scripts.php"
+    ]
+  }
+}
