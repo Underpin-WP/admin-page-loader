@@ -2,7 +2,7 @@
 
 namespace Underpin_Admin_Pages\Factories;
 
-use Underpin\Abstracts\Admin_Section;
+use Underpin_Admin_Pages\Abstracts\Admin_Section;
 use Underpin\Traits\Instance_Setter;
 
 if ( ! defined( 'ABSPATH' ) ) {

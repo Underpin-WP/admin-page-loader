@@ -9,7 +9,6 @@
 
 namespace Underpin_Admin_Pages\Abstracts;
 
-use Underpin\Abstracts\Admin_Section;
 use Underpin\Abstracts\Underpin;
 use Underpin\Traits\Feature_Extension;
 use Underpin\Traits\Templates;
@@ -166,13 +165,9 @@ abstract class Admin_Page {
 			return $_GET['section'];
 		}
 
-		$section_names = wp_list_pluck( $this->sections, 'id' );
+		$section = Underpin::make_class( $this->sections[0], 'Underpin_Admin_Pages\Factories\Admin_Section_Instance' );
 
-		if ( ! empty( $section_names ) ) {
-			return $section_names[0];
-		}
-
-		return '';
+		return $section->id;
 	}
 
 	/**
@@ -223,17 +218,22 @@ abstract class Admin_Page {
 		$section_key = 0;
 
 		foreach ( $this->sections as $key => $section_to_check ) {
+
 			if ( $section_to_check instanceof Admin_Section && $id === $section_to_check->id ) {
 				$section_key = $key;
 				break;
-			} elseif ( is_array( $section_to_check ) && isset( $section_to_check['id'] ) && $id === $section_to_check['id'] ) {
-				$this->sections[ $key ] = Underpin::make_class( $section_to_check, 'Underpin_Admin_Pages\Factories\Admin_Section_Instance' );
+			}
+
+			$section = Underpin::make_class( $section_to_check, 'Underpin_Admin_Pages\Factories\Admin_Section_Instance' );
+
+			if ( $id === $section->id ) {
+				$this->sections[ $key ] = $section;
 				$section_key            = $key;
 				break;
 			}
 		}
 
-		if ( $this->sections[ $section_key ] instanceof Admin_Section ) {
+		if ( isset( $this->sections[ $section_key ] ) && $this->sections[ $section_key ] instanceof Admin_Section ) {
 			return $this->sections[ $section_key ];
 		}
 

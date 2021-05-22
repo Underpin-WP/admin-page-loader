@@ -6,7 +6,7 @@
  * @date  : 12/21/19
  */
 
-use Underpin\Abstracts\Admin_Section;
+use Underpin_Admin_Pages\Abstracts\Admin_Section;
 use Underpin\Abstracts\Settings_Field;
 
 if ( ! defined( 'ABSPATH' ) ) {
