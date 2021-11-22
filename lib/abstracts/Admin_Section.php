@@ -9,8 +9,9 @@
 
 namespace Underpin_Admin_Pages\Abstracts;
 
+use Underpin\Abstracts\Underpin;
 use Underpin\Traits\Templates;
-use Underpin_Logger\Loaders\Logger;
+use Underpin\Loaders\Logger;
 use Underpin\Abstracts\Settings_Field;
 use WP_Error;
 use function Underpin\underpin;
@@ -286,7 +287,7 @@ abstract class Admin_Section {
 		if ( isset( $this->$key ) ) {
 			return $this->$key;
 		} else {
-			return new WP_Error( 'batch_task_param_not_set', 'The batch task key ' . $key . ' could not be found.' );
+			return new WP_Error( 'post_template_param_not_set', 'The batch task key ' . $key . ' could not be found.' );
 		}
 	}
 

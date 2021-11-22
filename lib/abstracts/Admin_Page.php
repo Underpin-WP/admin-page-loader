@@ -12,7 +12,7 @@ namespace Underpin_Admin_Pages\Abstracts;
 use Underpin\Abstracts\Underpin;
 use Underpin\Traits\Feature_Extension;
 use Underpin\Traits\Templates;
-use Underpin_Logger\Loaders\Logger;
+use Underpin\Loaders\Logger;
 use WP_Error;
 use function Underpin\underpin;
 
